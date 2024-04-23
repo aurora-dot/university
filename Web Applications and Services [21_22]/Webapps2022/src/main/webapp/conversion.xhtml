@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Currency Conversion | PalPay</title>
+</h:head>
+<h:body>
+    <h2>Currency Conversion</h2>
+    <h:form>
+        <h:outputLabel for="currency1" value="*Enter currency type from: " />
+        <h:selectOneMenu id="currency1" value="#{restBean.currency1}" required="true" requiredMessage="Mandatory Field"
+            label="currency1">
+            <f:selectItems value="${restBean.allOrderCurrencies}" var="state"
+                itemLabel="#{state.getCurrencySymbol(state)}" itemValue="#{s}" />
+        </h:selectOneMenu>
+        &nbsp;
+        <h:message style="color: red" for="currency1" />
+        <br />
+        <h:outputLabel for="currency2" value="*Enter currency type to: " />
+        <h:selectOneMenu id="currency2" value="#{restBean.currency2}" required="true" requiredMessage="Mandatory Field"
+            label="currency2">
+            <f:selectItems value="${restBean.allOrderCurrencies}" var="state"
+                itemLabel="#{state.getCurrencySymbol(state)}" itemValue="#{s}" />
+        </h:selectOneMenu>
+        &nbsp;
+        <h:message style="color: red" for="currency2" />
+        <br />
+        <h:outputLabel for="currencyCount" value="*Currency amount: " />
+        <h:inputText id="currencyCount" value="#{restBean.amountOfCurrency}" title="Enter currency amount"
+            required="true" requiredMessage="Mandatory Field">
+            <f:converter converterId="javax.faces.Float" />
+        </h:inputText>
+        &nbsp;
+        <h:message style="color: red" for="currencyCount" />
+        <br />
+        <h:commandButton id="convert" type="submit" value="Convert" action="#{restBean.retrieveConversion()}"
+            title="Convert Currency" />
+        <h:commandButton id="reset" type="reset" value="Reset Form" title="Reset Form" />
+    </h:form>
+    <h:link value="Back to index" outcome="index" />
+</h:body>
+
+</html>

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Edge
+comment0.text=\r\n\ Edge\ representation\ class\ for\ graph\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ 30/04/2020\r\n
+comment1.params=name\ origin\ destination
+comment1.target=Edge(java.lang.String,\ Vertex,\ Vertex)
+comment1.text=\r\n\ The\ constructor\ -\ Sets\ the\ name,\ and\ the\ two\ verticies\ it\ is\ connected\ to\r\n\r\n\ @param\ \ name\ \ The\ name\ of\ the\ edge\ to\ be\ set\r\n\ @param\ \ origin\ \ The\ first\ vertex\ the\ edge\ is\ connected\ to\r\n\ @param\ \ destination\ \ The\ second\ vertex\ the\ edge\ is\ connected\ to\r\n
+comment2.params=
+comment2.target=Vertex\ getOrigin()
+comment2.text=\r\n\ Gets\ the\ first\ vertex\ the\ edge\ is\ connected\ to\r\n\r\n\ @return\ \ \ \ The\ first\ vertex\ the\ edge\ is\ connected\ to\r\n
+comment3.params=
+comment3.target=Vertex\ getDestination()
+comment3.text=\r\n\ Gets\ the\ second\ vertex\ the\ edge\ is\ connected\ to\r\n\r\n\ @return\ \ \ \ The\ second\ vertex\ the\ edge\ is\ connected\ to\r\n
+numComments=4

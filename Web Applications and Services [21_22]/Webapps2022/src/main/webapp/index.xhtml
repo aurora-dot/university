@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+    <title>Home | PalPay</title>
+</h:head>
+<h:body>
+    <h1>PalPay.</h1>
+
+    <c:if test="#{loginBean.visitorUser}">
+        <h3>Hello user:
+            <h:outputText value="${request.remoteUser}" />
+        </h3>
+        <h4>Your balance:
+            <h:outputText value="${currencyTransactionBean.getUserCurrencyCount(request.remoteUser)}" />
+        </h4>
+        <div>
+            <h:link value="Request currency" outcome="request" />
+        </div>
+        <div>
+            <h:link value="Send currency" outcome="send" />
+        </div>
+        <div>
+            <h:link value="Transactions" outcome="transactions" />
+        </div>
+        <div>
+            <h:link value="Requests by others to take from you" outcome="requests" />
+        </div>
+    </c:if>
+
+    <c:if test="#{loginBean.visitorAdmin}">
+        <h3>Hello admin:
+            <h:outputText value="${request.remoteUser}" />
+        </h3>
+        <div>
+            <h:link value="Register new admin" outcome="registrationAdmin" />
+        </div>
+        <div>
+            <h:link value="View all accounts" outcome="accounts" />
+        </div>
+        <div>
+            <h:link value="View all transactions" outcome="transactionsAdmin" />
+        </div>
+    </c:if>
+
+    <h:link value="View currency conversion" outcome="conversion" />
+
+    <c:if test="#{!(loginBean.visitorAdmin || loginBean.visitorUser)}">
+        <div>
+            <h:link value="Login" outcome="login" rendered="#{empty request.remoteUser}" />
+            |
+            <h:link value="Register" outcome="registration" rendered="#{empty request.remoteUser}" />
+        </div>
+    </c:if>
+
+
+    <c:if test="#{loginBean.visitorAdmin || loginBean.visitorUser}">
+        <br />
+        <br />
+    </c:if>
+
+    <h:form rendered="#{not empty request.remoteUser}">
+        Logout:
+        <h:commandButton value="Logout" action="#{loginBean.logout()}" />
+    </h:form>
+</h:body>
+
+</html>

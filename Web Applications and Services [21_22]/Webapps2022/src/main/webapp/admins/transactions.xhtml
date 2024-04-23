@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>All Transactions | PalPay</title>
+</h:head>
+<h:body>
+    <h2>All Transactions</h2>
+    <h:dataTable value="#{currencyTransactionBean.allTransactions()}" var="transaction">
+        <h:column>
+            <f:facet name="header">|---- Sender ----| </f:facet>
+            <h:outputText value="| #{transaction.fromSystemUser.username}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">|---- Sender money taken ----| </f:facet>
+            <h:outputText
+                value="| -#{transaction.currencyTypeTo.getCurrencySymbol(transaction.currencyTypeFrom)}#{transaction.currencyCountFrom}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">|---- Receiver ----| </f:facet>
+            <h:outputText value="| #{transaction.toSystemUser.username}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">|---- Receiver money added ----|</f:facet>
+            <h:outputText
+                value="| +#{transaction.currencyTypeFrom.getCurrencySymbol(transaction.currencyTypeTo)}#{transaction.currencyCountTo}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">|---------- Timestamp ----------|</f:facet>
+            <h:outputText value="| #{transaction.timeStamp.toString()}" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">|---- Completed ----|</f:facet>
+            <h:outputText value="| #{transaction.completed}" />
+        </h:column>
+    </h:dataTable>
+
+    <br />
+    <h:link value="Back to index" outcome="index" />
+</h:body>
+
+</html>
